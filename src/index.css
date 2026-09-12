@@ -1,4 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=DM+Sans:wght@400;450;500;600;700&display=swap');
-:root{font-family:'DM Sans',sans-serif;color:#f4f4eb;background:#171a17;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-weight:400;--lime:#d1ed70;--muted:#a5aaa0;--line:#ffffff24}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;min-width:320px}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button{cursor:pointer;color:inherit}button,a{touch-action:manipulation}button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--lime);outline-offset:6px}::selection{background:var(--lime);color:#171a17}h1,h2,h3,p{margin:0}img{display:block;max-width:100%}em{font-style:normal}.skip-link{position:fixed;top:-100px;left:20px;background:var(--lime);color:#171a17;padding:15px;z-index:100}.skip-link:focus{top:10px}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&display=swap');
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #282926;
+  background: #e9e8e4;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --paper: #e9e8e4;
+  --ink: #282926;
+  --muted: #74756d;
+  --orange: #ed623d;
+  --line: #292b2723;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { margin: 0; min-width: 320px; }
+button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; color: inherit; }
+button:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--orange); outline-offset: 6px; }
+::selection { background: var(--orange); color: #fff; }
+h1, h2, h3, p { margin: 0; }
+img { display: block; max-width: 100%; }
+em { font-style: normal; }
+.skip-link { position: fixed; top: -100px; left: 20px; padding: 16px; background: var(--ink); color: white; z-index: 100; }
+.skip-link:focus { top: 12px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
