@@ -2,6 +2,9 @@
 
 A React application built with Vite.
 
+The landing page uses React, Vite, Tailwind CSS, and shadcn components, with a
+static material hero and responsive sections for products and applications.
+
 ## Development
 
 ```bash
