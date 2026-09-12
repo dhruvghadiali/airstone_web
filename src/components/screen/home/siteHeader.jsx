@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { ArrowUpRight, Menu } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Brand } from "@screenComponent/home/brand";
 import { Button } from "@shadcnComponent/button";
 import {
@@ -25,9 +26,9 @@ export function SiteHeader() {
       className="sticky top-0 z-50 border-b border-black/10 bg-[#f3f4ee]/95 backdrop-blur-xl"
     >
       <div className="mx-auto flex h-18 max-w-[1600px] items-center justify-between px-[5vw]">
-        <a href="#home" aria-label="Airstone home">
+        <Link to="/" aria-label="Airstone home">
           <Brand />
-        </a>
+        </Link>
         <nav
           className="hidden items-center gap-1 rounded-full border border-black/10 bg-white/35 p-1 shadow-sm backdrop-blur-lg md:flex"
           aria-label="Main navigation"
@@ -38,11 +39,16 @@ export function SiteHeader() {
             </Button>
           ))}
         </nav>
-        <Button className="hidden md:inline-flex" asChild>
-          <a href="#materials">
-            Explore the range <ArrowUpRight />
-          </a>
-        </Button>
+        <div className="hidden items-center gap-2 md:flex">
+          <Button variant="outline" asChild>
+            <Link to="/login">Log in</Link>
+          </Button>
+          <Button asChild>
+            <a href="#materials">
+              Explore the range <ArrowUpRight />
+            </a>
+          </Button>
+        </div>
         <Sheet>
           <SheetTrigger asChild>
             <Button
@@ -88,6 +94,15 @@ export function SiteHeader() {
                 </SheetClose>
               ))}
             </nav>
+            <SheetClose asChild>
+              <Link
+                to="/login"
+                onClick={() => { navigatingRef.current = true; }}
+                className="mt-8 flex shrink-0 items-center justify-between rounded-full border border-black/15 px-5 py-4 text-sm font-medium"
+              >
+                Log in <ArrowUpRight className="size-5" />
+              </Link>
+            </SheetClose>
             <SheetClose asChild>
               <a
                 href="#materials"
