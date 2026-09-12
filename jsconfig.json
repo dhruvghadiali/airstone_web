@@ -17,6 +17,18 @@
       ],
       "@lib/*": [
         "./src/lib/*"
+      ],
+      "@screenComponent": [
+        "./src/components/screen"
+      ],
+      "@page": [
+        "./src/pages"
+      ],
+      "@shadcnComponent": [
+        "./src/components/ui"
+      ],
+      "@lib": [
+        "./src/lib"
       ]
     }
   }
