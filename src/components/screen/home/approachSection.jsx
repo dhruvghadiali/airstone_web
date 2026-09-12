@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
-import { Eyebrow } from "./eyebrow";
-import { Button } from "@/components/ui/button";
+import { Eyebrow } from "@screenComponent/home/eyebrow";
+import { Button } from "@shadcnComponent/button";
 
 export default function ApproachSection() {
   return (
@@ -10,14 +10,14 @@ export default function ApproachSection() {
     >
       <div className="relative aspect-square overflow-hidden">
         <img
-          className="h-full w-full object-cover [mask-image:linear-gradient(90deg,black_70%,transparent)] max-lg:[mask-image:none]"
+          className="h-full w-full object-cover mask-[linear-gradient(90deg,black_70%,transparent)] max-lg:mask-none"
           src="/blocks-hero.png"
           alt="Close-up of concrete block textures and hollow-core construction"
           loading="lazy"
           width="1536"
           height="1024"
         />
-        <span className="absolute bottom-6 left-[7vw] text-xs tracking-[0.1em] text-white/55">
+        <span className="absolute bottom-6 left-[7vw] text-xs tracking-widest text-white/55">
           THE MATERIAL. UP CLOSE.
         </span>
       </div>

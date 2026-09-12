@@ -1,18 +1,18 @@
-import { SiteHeader } from "@/components/screen/home/siteHeader";
-import SiteFooter from "@/components/screen/home/siteFooter";
-import HeroSection from "@/components/screen/home/heroSection";
-import MaterialsSection from "@/components/screen/home/materialsSection";
-import ApproachSection from "@/components/screen/home/approachSection";
-import ApplicationsSection from "@/components/screen/home/applicationsSection";
-import CallToActionSection from "@/components/screen/home/callToActionSection";
+import { SiteHeader } from "@screenComponent/home/siteHeader";
+import SiteFooter from "@screenComponent/home/siteFooter";
+import HeroSection from "@screenComponent/home/heroSection";
+import MaterialsSection from "@screenComponent/home/materialsSection";
+import ApproachSection from "@screenComponent/home/approachSection";
+import ApplicationsSection from "@screenComponent/home/applicationsSection";
+import CallToActionSection from "@screenComponent/home/callToActionSection";
 
 export default function Home() {
   return (
     <div
-      className="isolate overflow-clip bg-[#e8e9e3] text-[#292d27]"
+      className="isolate overflow-clip bg-background text-[#292d27]"
     >
       <a
-        className="fixed -top-24 left-5 z-[100] bg-[#292d27] px-4 py-3 text-sm text-white focus:top-3"
+        className="fixed -top-24 left-5 z-100 bg-[#292d27] px-4 py-3 text-sm text-white focus:top-3"
         href="#materials"
       >
         Skip to materials

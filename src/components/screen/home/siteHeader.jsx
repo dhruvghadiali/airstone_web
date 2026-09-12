@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { ArrowUpRight, Menu } from "lucide-react";
-import { Brand } from "./brand";
-import { Button } from "@/components/ui/button";
+import { Brand } from "@screenComponent/home/brand";
+import { Button } from "@shadcnComponent/button";
 import {
   Sheet,
   SheetClose,
@@ -9,7 +9,7 @@ import {
   SheetDescription,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
+} from "@shadcnComponent/sheet";
 
 const navigation = [
   ["Materials", "#materials"],
@@ -24,7 +24,7 @@ export function SiteHeader() {
     <header
       className="sticky top-0 z-50 border-b border-black/10 bg-[#f3f4ee]/95 backdrop-blur-xl"
     >
-      <div className="mx-auto flex h-[72px] max-w-[1600px] items-center justify-between px-[5vw]">
+      <div className="mx-auto flex h-18 max-w-[1600px] items-center justify-between px-[5vw]">
         <a href="#home" aria-label="Airstone home">
           <Brand />
         </a>
@@ -92,7 +92,7 @@ export function SiteHeader() {
               <a
                 href="#materials"
                 onClick={() => { navigatingRef.current = true; }}
-                className="mt-auto flex shrink-0 items-center justify-between rounded-full bg-[#e66f4a] px-5 py-4 text-sm font-medium"
+                className="mt-auto flex shrink-0 items-center justify-between rounded-full bg-accent px-5 py-4 text-sm font-medium"
               >
                 Explore the range <ArrowUpRight className="size-5" />
               </a>

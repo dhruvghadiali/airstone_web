@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
-import { Eyebrow } from "./eyebrow";
-import { Button } from "@/components/ui/button";
+import { Eyebrow } from "@screenComponent/home/eyebrow";
+import { Button } from "@shadcnComponent/button";
 
 export default function ApplicationsSection() {
   return (
@@ -52,7 +52,7 @@ export default function ApplicationsSection() {
             </span>
             <div>
               <Eyebrow>{label}</Eyebrow>
-              <h3 className="mt-2 text-3xl font-medium tracking-[-0.05em] transition-transform duration-300 group-hover:translate-x-2 lg:text-5xl">
+              <h3 className="mt-2 text-3xl font-medium tracking-tighter transition-transform duration-300 group-hover:translate-x-2 lg:text-5xl">
                 {title}
               </h3>
             </div>

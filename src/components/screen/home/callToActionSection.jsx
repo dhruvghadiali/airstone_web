@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
-import { Eyebrow } from "./eyebrow";
-import { Button } from "@/components/ui/button";
+import { Eyebrow } from "@screenComponent/home/eyebrow";
+import { Button } from "@shadcnComponent/button";
 
 export default function CallToActionSection() {
   return (

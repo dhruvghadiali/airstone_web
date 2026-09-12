@@ -1,5 +1,5 @@
-import { Eyebrow } from "./eyebrow";
-import { products } from "./homeData";
+import { Eyebrow } from "@screenComponent/home/eyebrow";
+import { products } from "@screenComponent/home/homeData";
 
 export default function MaterialsSection() {
   return (

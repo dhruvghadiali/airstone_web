@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
-import { Brand } from "./brand";
-import { Button } from "@/components/ui/button";
+import { Brand } from "@screenComponent/home/brand";
+import { Button } from "@shadcnComponent/button";
 
 export default function SiteFooter() {
   return (
