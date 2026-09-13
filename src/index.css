@@ -1,30 +1,85 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&display=swap');
 @import "tailwindcss";
 
-@theme {
+/* Dark mode is disabled for this brand site. Existing dark variants compile,
+   but no runtime theme can activate them. */
+@custom-variant dark (&:is(.__dark-disabled__ *));
+
+@theme inline {
   --font-sans: 'DM Sans', sans-serif;
-  --color-background: #e8e9e3;
-  --color-foreground: #292d27;
-  --color-primary: #292d27;
-  --color-primary-foreground: #ffffff;
-  --color-accent: #e66f4a;
-  --color-muted: #7a8570;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+}
+
+:root {
+  color-scheme: light;
+  --radius: 0.75rem;
+  --background: #e8e9e3;
+  --foreground: #292d27;
+  --card: #f4f3ee;
+  --card-foreground: #292d27;
+  --popover: #f8f7f3;
+  --popover-foreground: #292d27;
+  --primary: #292d27;
+  --primary-foreground: #ffffff;
+  --secondary: #d8ddd2;
+  --secondary-foreground: #292d27;
+  --muted: #dfe2da;
+  --muted-foreground: #66705f;
+  --accent: #e66f4a;
+  --accent-foreground: #ffffff;
+  --destructive: #c73e2d;
+  --destructive-foreground: #ffffff;
+  --border: #c7cbc2;
+  --input: #b8beb3;
+  --ring: #e66f4a;
+  --chart-1: #e66f4a;
+  --chart-2: #7a8570;
+  --chart-3: #292d27;
+  --chart-4: #b7a489;
+  --chart-5: #9ca78f;
 }
 
 @layer base {
   :root {
     font-family: var(--font-sans);
-    color: #292d27;
-    background: #e8e9e3;
+    color: var(--foreground);
+    background: var(--background);
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  * { box-sizing: border-box; }
+  * { box-sizing: border-box; border-color: var(--border); outline-color: color-mix(in srgb, var(--ring) 50%, transparent); }
   html { scroll-behavior: smooth; scroll-padding-top: 72px; }
-  body { min-width: 320px; margin: 0; }
+  body { min-width: 320px; margin: 0; background: var(--background); color: var(--foreground); }
   button, a { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
   button { cursor: pointer; }
   summary { cursor: pointer; }
@@ -33,7 +88,7 @@
   h1, h2, h3, p { margin: 0; }
   img { display: block; max-width: 100%; }
   em { font-style: normal; }
-  ::selection { background: #e66f4a; color: #fff; }
+  ::selection { background: var(--accent); color: var(--accent-foreground); }
 }
 
 @media (prefers-reduced-motion: reduce) {

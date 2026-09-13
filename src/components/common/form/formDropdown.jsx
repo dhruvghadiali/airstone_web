@@ -108,7 +108,7 @@ export default function FormDropdown({
             }}
             className={cn(
               "h-12 w-full justify-between rounded-xl border-black/15 bg-white/50 px-4 font-normal shadow-none hover:bg-white/70 hover:text-[#292d27]",
-              !selectedOption && "text-muted",
+              !selectedOption && "text-muted-foreground",
               error && "border-red-600",
             )}
           >
@@ -135,7 +135,7 @@ export default function FormDropdown({
             )}
             <CommandList>
               {isLoading ? (
-                <div className="flex items-center justify-center gap-2 py-6 text-sm text-muted">
+                <div className="flex items-center justify-center gap-2 py-6 text-sm text-muted-foreground">
                   <LoaderCircle className="size-4 animate-spin" aria-hidden="true" />
                   Loading options...
                 </div>
