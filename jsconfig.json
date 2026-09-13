@@ -24,6 +24,12 @@
       "@context/*": [
         "./src/contexts/*"
       ],
+      "@api/*": [
+        "./src/api/*"
+      ],
+      "@enum/*": [
+        "./src/enum/*"
+      ],
       "@redux/*": [
         "./src/store/*"
       ],
@@ -44,6 +50,12 @@
       ],
       "@context": [
         "./src/contexts"
+      ],
+      "@api": [
+        "./src/api"
+      ],
+      "@enum": [
+        "./src/enum"
       ],
       "@redux": [
         "./src/store"

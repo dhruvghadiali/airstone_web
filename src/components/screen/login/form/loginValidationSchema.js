@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-import { ROLE_VALUES } from "@/enum/roles";
+import { ROLE_VALUES } from "@enum/roles";
 import { LOGIN_VALIDATION_LIMITS } from "@screenComponent/login/form/loginFormConstants";
 import { LOGIN_FORM_FIELDS } from "@screenComponent/login/form/loginFormFields";
 import { LOGIN_VALIDATION_MESSAGES } from "@screenComponent/login/form/loginFormMessages";

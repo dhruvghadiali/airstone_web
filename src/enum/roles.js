@@ -11,3 +11,9 @@ export const ROLE_OPTIONS = Object.freeze([
 ]);
 
 export const ROLE_VALUES = Object.freeze(Object.values(ROLES));
+
+export const ROLE_API_PATHS = Object.freeze({
+  [ROLES.SUPER_ADMIN]: "super-admin",
+  [ROLES.ADMIN]: "admin",
+  [ROLES.EMPLOYEE]: "employee",
+});

@@ -1,4 +1,5 @@
 const AUTH_STORAGE_KEY = "auth";
+export const AUTH_SESSION_INVALID_EVENT = "airstone:auth-session-invalid";
 
 export function getStoredAuth() {
   if (typeof window === "undefined") {
@@ -8,7 +9,14 @@ export function getStoredAuth() {
   try {
     return JSON.parse(localStorage.getItem(AUTH_STORAGE_KEY) ?? "null");
   } catch {
+    removeStoredAuth();
     return null;
+  }
+}
+
+export function notifyInvalidAuthSession() {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new Event(AUTH_SESSION_INVALID_EVENT));
   }
 }
 

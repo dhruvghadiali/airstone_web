@@ -1,18 +1,42 @@
 import { useFormik } from "formik";
-import { ArrowRight, LockKeyhole } from "lucide-react";
+import { ArrowRight, LoaderCircle } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import FormDropdown from "@commonComponent/form/formDropdown";
 import FormInput from "@commonComponent/form/formInput";
-import { ROLE_OPTIONS } from "@/enum/roles";
+import { ROLE_OPTIONS } from "@enum/roles";
 import { Button } from "@shadcnComponent/button";
 import { loginFormInitialValues } from "@screenComponent/login/form/loginFormInitialValues";
 import { loginValidationSchema } from "@screenComponent/login/form/loginValidationSchema";
+import { signIn } from "@redux/auth/auth.action";
+import {
+  selectIsSigningIn,
+  selectSignInError,
+} from "@redux/auth/auth.selector";
+import { NAVIGATION_ROUTES } from "@/routes/navigation.routes";
 
 export default function LoginForm() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isSigningIn = useSelector(selectIsSigningIn);
+  const signInError = useSelector(selectSignInError);
   const formik = useFormik({
     initialValues: loginFormInitialValues,
     validationSchema: loginValidationSchema,
-    onSubmit: () => {},
+    onSubmit: async (values, { setSubmitting }) => {
+      try {
+        await dispatch(signIn(values)).unwrap();
+
+        navigate(NAVIGATION_ROUTES.DASHBOARD, { replace: true });
+      } catch {
+        // The Redux error state contains the display-ready API message.
+      } finally {
+        setSubmitting(false);
+      }
+    },
   });
+
+  const submitting = formik.isSubmitting || isSigningIn;
 
   const roleHasError = formik.touched.role && formik.errors.role;
   const usernameHasError = formik.touched.username && formik.errors.username;
@@ -42,6 +66,7 @@ export default function LoginForm() {
             value={formik.values.username}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            disabled={submitting}
             error={usernameHasError ? formik.errors.username : undefined}
           />
           <FormInput
@@ -54,6 +79,7 @@ export default function LoginForm() {
             value={formik.values.password}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            disabled={submitting}
             error={passwordHasError ? formik.errors.password : undefined}
           />
           <FormDropdown
@@ -65,10 +91,32 @@ export default function LoginForm() {
             value={formik.values.role}
             onValueChange={(value) => formik.setFieldValue("role", value)}
             onBlur={() => formik.setFieldTouched("role", true)}
+            disabled={submitting}
             error={roleHasError ? formik.errors.role : undefined}
           />
-          <Button className="h-12 w-full rounded-xl" type="submit">
-            Log in <ArrowRight />
+          {signInError && (
+            <p
+              className="rounded-xl border border-destructive/20 bg-destructive/10 px-4 py-3 text-sm text-destructive"
+              role="alert"
+              aria-live="polite"
+            >
+              {signInError}
+            </p>
+          )}
+          <Button
+            className="h-12 w-full rounded-xl"
+            type="submit"
+            disabled={submitting}
+          >
+            {submitting ? (
+              <>
+                <LoaderCircle className="animate-spin" /> Signing in...
+              </>
+            ) : (
+              <>
+                Log in <ArrowRight />
+              </>
+            )}
           </Button>
         </form>
       </div>

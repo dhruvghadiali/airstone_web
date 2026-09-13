@@ -1,6 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "@page/home";
 import Login from "@page/login";
+import Dashboard from "@page/dashboard";
 import { ThemeProvider } from "@context/ThemeProvider";
 import PrivateRoute from "@/routes/private.route";
 import PublicRoute from "@/routes/public.route";
@@ -17,7 +18,10 @@ export default function App() {
           </Route>
 
           <Route element={<PrivateRoute />}>
-            {/* Add authenticated pages inside this route group. */}
+            <Route
+              path={NAVIGATION_ROUTES.DASHBOARD}
+              element={<Dashboard />}
+            />
           </Route>
 
           <Route

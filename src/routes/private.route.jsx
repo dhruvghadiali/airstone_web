@@ -1,15 +1,17 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 import { loggedOut } from "@redux/auth/auth.action";
 import { selectAuthToken } from "@redux/auth/auth.selector";
-import { isAuthTokenValid } from "@/routes/auth-token.util";
+import {
+  getTokenExpiration,
+  isAuthTokenValid,
+} from "@/routes/auth-token.util";
 import { NAVIGATION_ROUTES } from "@/routes/navigation.routes";
 
 export default function PrivateRoute() {
   const dispatch = useDispatch();
-  const location = useLocation();
   const token = useSelector(selectAuthToken);
   const isValid = isAuthTokenValid(token);
 
@@ -19,12 +21,27 @@ export default function PrivateRoute() {
     }
   }, [dispatch, isValid, token]);
 
+  useEffect(() => {
+    const expiresAt = getTokenExpiration(token);
+
+    if (!expiresAt) {
+      return undefined;
+    }
+
+    const remainingTime = expiresAt.getTime() - Date.now();
+    const timeoutId = window.setTimeout(
+      () => dispatch(loggedOut()),
+      Math.max(0, Math.min(remainingTime, 2_147_483_647)),
+    );
+
+    return () => window.clearTimeout(timeoutId);
+  }, [dispatch, token]);
+
   if (!isValid) {
     return (
       <Navigate
-        to={NAVIGATION_ROUTES.LOGIN}
+        to={NAVIGATION_ROUTES.HOME}
         replace
-        state={{ from: location }}
       />
     );
   }

@@ -13,6 +13,8 @@ export default defineConfig({
       '@shadcnComponent': new URL('./src/components/ui', import.meta.url).pathname,
       '@lib': new URL('./src/lib', import.meta.url).pathname,
       '@context': new URL('./src/contexts', import.meta.url).pathname,
+      '@api': new URL('./src/api', import.meta.url).pathname,
+      '@enum': new URL('./src/enum', import.meta.url).pathname,
       '@': new URL('./src', import.meta.url).pathname,
     },
   },

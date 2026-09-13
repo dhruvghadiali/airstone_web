@@ -18,6 +18,10 @@ function decodeJwtPayload(token) {
   }
 }
 
+function isJwtToken(token) {
+  return token.split(".").length === 3;
+}
+
 export function getTokenExpiration(token) {
   const expiresAt = Number(decodeJwtPayload(token)?.exp);
 
@@ -29,11 +33,17 @@ export function getTokenExpiration(token) {
 }
 
 export function isAuthTokenValid(token) {
-  if (!token) {
+  if (typeof token !== "string" || !token.trim()) {
     return false;
   }
 
-  const expiresAt = getTokenExpiration(token);
+  const normalizedToken = token.trim();
+
+  if (isJwtToken(normalizedToken) && !decodeJwtPayload(normalizedToken)) {
+    return false;
+  }
+
+  const expiresAt = getTokenExpiration(normalizedToken);
 
   return !expiresAt || Date.now() < expiresAt.getTime();
 }
