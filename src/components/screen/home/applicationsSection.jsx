@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { Eyebrow } from "@screenComponent/home/eyebrow";
 import { Button } from "@shadcnComponent/button";
+import { NAVIGATION_ROUTES } from "@/routes/navigation.routes";
 
 export default function ApplicationsSection() {
   return (
@@ -66,7 +67,7 @@ export default function ApplicationsSection() {
               asChild
             >
               <a
-                href="#materials"
+                href={NAVIGATION_ROUTES.SECTIONS.MATERIALS}
                 aria-label={`Explore blocks for ${title}`}
               >
                 <ArrowUpRight />

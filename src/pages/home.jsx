@@ -5,6 +5,7 @@ import MaterialsSection from "@screenComponent/home/materialsSection";
 import ApproachSection from "@screenComponent/home/approachSection";
 import ApplicationsSection from "@screenComponent/home/applicationsSection";
 import CallToActionSection from "@screenComponent/home/callToActionSection";
+import { NAVIGATION_ROUTES } from "@/routes/navigation.routes";
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
     >
       <a
         className="fixed -top-24 left-5 z-100 bg-[#292d27] px-4 py-3 text-sm text-white focus:top-3"
-        href="#materials"
+        href={NAVIGATION_ROUTES.SECTIONS.MATERIALS}
       >
         Skip to materials
       </a>

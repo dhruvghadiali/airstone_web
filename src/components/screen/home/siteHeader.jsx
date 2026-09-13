@@ -11,11 +11,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@shadcnComponent/sheet";
+import { NAVIGATION_ROUTES } from "@/routes/navigation.routes";
 
 const navigation = [
-  ["Materials", "#materials"],
-  ["Our approach", "#approach"],
-  ["Applications", "#applications"],
+  ["Materials", NAVIGATION_ROUTES.SECTIONS.MATERIALS],
+  ["Our approach", NAVIGATION_ROUTES.SECTIONS.APPROACH],
+  ["Applications", NAVIGATION_ROUTES.SECTIONS.APPLICATIONS],
 ];
 
 export function SiteHeader() {
@@ -26,7 +27,7 @@ export function SiteHeader() {
       className="sticky top-0 z-50 border-b border-black/10 bg-[#f3f4ee]/95 backdrop-blur-xl"
     >
       <div className="mx-auto flex h-18 max-w-[1600px] items-center justify-between px-[5vw]">
-        <Link to="/" aria-label="Airstone home">
+        <Link to={NAVIGATION_ROUTES.HOME} aria-label="Airstone home">
           <Brand />
         </Link>
         <nav
@@ -41,10 +42,10 @@ export function SiteHeader() {
         </nav>
         <div className="hidden items-center gap-2 md:flex">
           <Button variant="outline" asChild>
-            <Link to="/login">Log in</Link>
+            <Link to={NAVIGATION_ROUTES.LOGIN}>Log in</Link>
           </Button>
           <Button asChild>
-            <a href="#materials">
+            <a href={NAVIGATION_ROUTES.SECTIONS.MATERIALS}>
               Explore the range <ArrowUpRight />
             </a>
           </Button>
@@ -96,7 +97,7 @@ export function SiteHeader() {
             </nav>
             <SheetClose asChild>
               <Link
-                to="/login"
+                to={NAVIGATION_ROUTES.LOGIN}
                 onClick={() => { navigatingRef.current = true; }}
                 className="mt-8 flex shrink-0 items-center justify-between rounded-full border border-black/15 px-5 py-4 text-sm font-medium"
               >
@@ -105,7 +106,7 @@ export function SiteHeader() {
             </SheetClose>
             <SheetClose asChild>
               <a
-                href="#materials"
+                href={NAVIGATION_ROUTES.SECTIONS.MATERIALS}
                 onClick={() => { navigatingRef.current = true; }}
                 className="mt-auto flex shrink-0 items-center justify-between rounded-full bg-accent px-5 py-4 text-sm font-medium"
               >

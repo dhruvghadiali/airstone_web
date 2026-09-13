@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { Eyebrow } from "@screenComponent/home/eyebrow";
 import { Button } from "@shadcnComponent/button";
+import { NAVIGATION_ROUTES } from "@/routes/navigation.routes";
 
 export default function CallToActionSection() {
   return (
@@ -14,7 +15,7 @@ export default function CallToActionSection() {
         <em className="text-[#813b29]">something solid.</em>
       </h2>
       <Button className="w-full sm:w-auto" size="lg" asChild>
-        <a href="#materials">
+        <a href={NAVIGATION_ROUTES.SECTIONS.MATERIALS}>
           Find your starting point <ArrowUpRight />
         </a>
       </Button>

@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { Eyebrow } from "@screenComponent/home/eyebrow";
 import { Button } from "@shadcnComponent/button";
+import { NAVIGATION_ROUTES } from "@/routes/navigation.routes";
 
 export default function ApproachSection() {
   return (
@@ -41,7 +42,7 @@ export default function ApproachSection() {
         <Button className="mt-7" variant="outline" asChild>
           <a
             className="border-white/20 text-white hover:bg-white/10 hover:text-white"
-            href="#materials"
+            href={NAVIGATION_ROUTES.SECTIONS.MATERIALS}
           >
             Discover the collection <ArrowUpRight />
           </a>

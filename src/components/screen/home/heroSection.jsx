@@ -2,6 +2,10 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { Button } from "@shadcnComponent/button";
 import { Eyebrow } from "@screenComponent/home/eyebrow";
 import { products } from "@screenComponent/home/homeData";
+import {
+  createSectionRoute,
+  NAVIGATION_ROUTES,
+} from "@/routes/navigation.routes";
 
 export default function HeroSection() {
   return (
@@ -20,10 +24,10 @@ export default function HeroSection() {
             </p>
             <div className="mt-7 grid gap-3 sm:mt-9 sm:flex sm:flex-wrap">
               <Button variant="accent" size="lg" asChild>
-                <a href="#materials">Explore materials <ArrowUpRight /></a>
+                <a href={NAVIGATION_ROUTES.SECTIONS.MATERIALS}>Explore materials <ArrowUpRight /></a>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="#approach">Our approach <ArrowDown /></a>
+                <a href={NAVIGATION_ROUTES.SECTIONS.APPROACH}>Our approach <ArrowDown /></a>
               </Button>
             </div>
           </div>
@@ -46,7 +50,7 @@ export default function HeroSection() {
           {products.map((product, index) => (
             <a
               key={product.name}
-              href={`#${product.id}`}
+              href={createSectionRoute(product.id)}
               className="group flex items-center gap-3 rounded-2xl border border-black/10 bg-white/30 p-4 lg:p-5 transition-colors hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <span className="text-xs text-[#596052]">0{index + 1}</span>
