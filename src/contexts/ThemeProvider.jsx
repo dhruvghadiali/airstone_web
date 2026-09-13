@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from "react";
 
-import { ThemeContext } from "./theme-context";
+import { ThemeContext } from "@context/theme-context";
 
 const FORCED_THEME = "light";
 

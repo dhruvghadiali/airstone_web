@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "@page/home";
 import Login from "@page/login";
-import { ThemeProvider } from "@/contexts/ThemeProvider";
+import { ThemeProvider } from "@context/ThemeProvider";
 
 export default function App() {
   return (

@@ -12,6 +12,7 @@ export default defineConfig({
       '@redux': new URL('./src/store', import.meta.url).pathname,
       '@shadcnComponent': new URL('./src/components/ui', import.meta.url).pathname,
       '@lib': new URL('./src/lib', import.meta.url).pathname,
+      '@context': new URL('./src/contexts', import.meta.url).pathname,
       '@': new URL('./src', import.meta.url).pathname,
     },
   },

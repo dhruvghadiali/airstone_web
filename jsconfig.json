@@ -21,6 +21,9 @@
       "@lib/*": [
         "./src/lib/*"
       ],
+      "@context/*": [
+        "./src/contexts/*"
+      ],
       "@redux/*": [
         "./src/store/*"
       ],
@@ -38,6 +41,9 @@
       ],
       "@lib": [
         "./src/lib"
+      ],
+      "@context": [
+        "./src/contexts"
       ],
       "@redux": [
         "./src/store"
