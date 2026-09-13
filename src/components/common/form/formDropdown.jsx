@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Check, ChevronsUpDown, LoaderCircle } from "lucide-react";
 import { Button } from "@shadcnComponent/button";
 import {
@@ -37,24 +37,44 @@ export default function FormDropdown({
   className,
 }) {
   const [open, setOpen] = useState(false);
+  const openRef = useRef(false);
   const [internalValue, setInternalValue] = useState(defaultValue);
   const [searchValue, setSearchValue] = useState("");
   const selectedValue = value === undefined ? internalValue : value;
   const selectedOption = options.find(
-    (option) => option.value === selectedValue,
+    (option) => String(option.value) === String(selectedValue),
   );
   const dropdownId = id ?? name;
   const errorId = error && dropdownId ? `${dropdownId}-error` : undefined;
 
-  const handleSelect = (option) => {
-    const nextValue = option.value === selectedValue ? "" : option.value;
+  const handleOpenChange = (nextOpen) => {
+    const wasOpen = openRef.current;
+    openRef.current = nextOpen;
+    setOpen(nextOpen);
+
+    if (wasOpen && !nextOpen) {
+      setSearchValue("");
+      onBlur?.();
+    }
+  };
+
+  const handleSelect = async (option) => {
+    const isSelected = String(option.value) === String(selectedValue);
+    const nextValue = isSelected ? "" : option.value;
 
     if (value === undefined) {
       setInternalValue(nextValue);
     }
 
-    onValueChange?.(nextValue, nextValue ? option : null);
+    openRef.current = false;
     setOpen(false);
+    setSearchValue("");
+
+    try {
+      await onValueChange?.(nextValue, nextValue ? option : null);
+    } finally {
+      onBlur?.();
+    }
   };
 
   const handleSearchChange = (nextSearchValue) => {
@@ -69,7 +89,7 @@ export default function FormDropdown({
           {label}
         </label>
       )}
-      <Popover open={open} onOpenChange={setOpen}>
+      <Popover open={open} onOpenChange={handleOpenChange}>
         <PopoverTrigger asChild>
           <Button
             id={dropdownId}
@@ -81,10 +101,14 @@ export default function FormDropdown({
             aria-invalid={Boolean(error)}
             aria-describedby={errorId}
             disabled={disabled}
-            onBlur={onBlur}
+            onBlur={(event) => {
+              if (!openRef.current) {
+                onBlur?.(event);
+              }
+            }}
             className={cn(
               "h-12 w-full justify-between rounded-xl border-black/15 bg-white/50 px-4 font-normal shadow-none hover:bg-white/70 hover:text-[#292d27]",
-              !selectedOption && "text-[#7a8570]",
+              !selectedOption && "text-muted",
               error && "border-red-600",
             )}
           >
@@ -95,10 +119,13 @@ export default function FormDropdown({
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="w-[var(--radix-popover-trigger-width)] p-0"
+          className="w-(--radix-popover-trigger-width) border-black/10 bg-white p-0 text-[#292d27] shadow-xl"
           align="start"
         >
-          <Command shouldFilter={searchMode !== "remote"}>
+          <Command
+            className="bg-white text-[#292d27]"
+            shouldFilter={searchMode !== "remote"}
+          >
             {search && (
               <CommandInput
                 value={searchValue}
@@ -108,7 +135,7 @@ export default function FormDropdown({
             )}
             <CommandList>
               {isLoading ? (
-                <div className="flex items-center justify-center gap-2 py-6 text-sm text-[#7a8570]">
+                <div className="flex items-center justify-center gap-2 py-6 text-sm text-muted">
                   <LoaderCircle className="size-4 animate-spin" aria-hidden="true" />
                   Loading options...
                 </div>
@@ -123,11 +150,12 @@ export default function FormDropdown({
                         keywords={[option.label]}
                         disabled={option.disabled}
                         onSelect={() => handleSelect(option)}
+                        className="rounded-lg px-3 py-2.5 data-[selected=true]:bg-background data-[selected=true]:text-[#292d27]"
                       >
                         <Check
                           className={cn(
                             "mr-2 size-4",
-                            selectedValue === option.value
+                            String(selectedValue) === String(option.value)
                               ? "opacity-100"
                               : "opacity-0",
                           )}

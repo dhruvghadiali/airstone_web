@@ -1,5 +1,7 @@
+import { LOGIN_FORM_FIELDS } from "@screenComponent/login/form/loginFormFields";
+
 export const loginFormInitialValues = {
-  role: "",
-  username: "",
-  password: "",
+  [LOGIN_FORM_FIELDS.role]: "",
+  [LOGIN_FORM_FIELDS.username]: "",
+  [LOGIN_FORM_FIELDS.password]: "",
 };
