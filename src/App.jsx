@@ -3,6 +3,7 @@ import Home from "@page/home";
 import Login from "@page/login";
 import Dashboard from "@page/dashboard";
 import { ThemeProvider } from "@context/ThemeProvider";
+import AppDrawer from "@commonComponent/navigation/appDrawer";
 import PrivateRoute from "@routes/private.route";
 import PublicRoute from "@routes/public.route";
 import { NAVIGATION_ROUTES } from "@routes/navigation.routes";
@@ -18,10 +19,12 @@ export default function App() {
           </Route>
 
           <Route element={<PrivateRoute />}>
-            <Route
-              path={NAVIGATION_ROUTES.DASHBOARD}
-              element={<Dashboard />}
-            />
+            <Route element={<AppDrawer />}>
+              <Route
+                path={NAVIGATION_ROUTES.DASHBOARD}
+                element={<Dashboard />}
+              />
+            </Route>
           </Route>
 
           <Route
