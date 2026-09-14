@@ -8,8 +8,8 @@ import { selectAuthToken } from "@redux/auth/auth.selector";
 import {
   getTokenExpiration,
   isAuthTokenValid,
-} from "@/routes/auth-token.util";
-import { NAVIGATION_ROUTES } from "@/routes/navigation.routes";
+} from "@routes/auth-token.util";
+import { NAVIGATION_ROUTES } from "@routes/navigation.routes";
 
 export default function PrivateRoute() {
   const dispatch = useDispatch();

@@ -3,9 +3,9 @@ import Home from "@page/home";
 import Login from "@page/login";
 import Dashboard from "@page/dashboard";
 import { ThemeProvider } from "@context/ThemeProvider";
-import PrivateRoute from "@/routes/private.route";
-import PublicRoute from "@/routes/public.route";
-import { NAVIGATION_ROUTES } from "@/routes/navigation.routes";
+import PrivateRoute from "@routes/private.route";
+import PublicRoute from "@routes/public.route";
+import { NAVIGATION_ROUTES } from "@routes/navigation.routes";
 
 export default function App() {
   return (

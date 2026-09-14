@@ -12,7 +12,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@shadcnComponent/sheet";
-import { NAVIGATION_ROUTES } from "@/routes/navigation.routes";
+import { NAVIGATION_ROUTES } from "@routes/navigation.routes";
 
 const navigation = [
   ["Materials", NAVIGATION_ROUTES.SECTIONS.MATERIALS],

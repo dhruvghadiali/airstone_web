@@ -30,6 +30,9 @@
       "@enum/*": [
         "./src/enum/*"
       ],
+      "@routes/*": [
+        "./src/routes/*"
+      ],
       "@redux/*": [
         "./src/store/*"
       ],
@@ -56,6 +59,9 @@
       ],
       "@enum": [
         "./src/enum"
+      ],
+      "@routes": [
+        "./src/routes"
       ],
       "@redux": [
         "./src/store"

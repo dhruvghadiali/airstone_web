@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { Eyebrow } from "@screenComponent/home/eyebrow";
 import { Button } from "@shadcnComponent/button";
-import { NAVIGATION_ROUTES } from "@/routes/navigation.routes";
+import { NAVIGATION_ROUTES } from "@routes/navigation.routes";
 
 export default function ApproachSection() {
   return (

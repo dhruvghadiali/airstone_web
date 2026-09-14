@@ -13,7 +13,7 @@ import {
   selectIsSigningIn,
   selectSignInError,
 } from "@redux/auth/auth.selector";
-import { NAVIGATION_ROUTES } from "@/routes/navigation.routes";
+import { NAVIGATION_ROUTES } from "@routes/navigation.routes";
 
 export default function LoginForm() {
   const dispatch = useDispatch();

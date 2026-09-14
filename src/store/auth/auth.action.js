@@ -8,7 +8,7 @@ import {
   superAdminAuthApi,
 } from "@api";
 import { ROLES } from "@enum/roles";
-import { isAuthTokenValid } from "@/routes/auth-token.util";
+import { isAuthTokenValid } from "@routes/auth-token.util";
 import { toLoginApiPayload } from "@screenComponent/login/form/login-api.payload";
 import { fromLoginResponse } from "@screenComponent/login/form/login-frontend.payload";
 import {

@@ -2,7 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import _ from "lodash";
 import { Eyebrow } from "@screenComponent/home/eyebrow";
 import { Button } from "@shadcnComponent/button";
-import { NAVIGATION_ROUTES } from "@/routes/navigation.routes";
+import { NAVIGATION_ROUTES } from "@routes/navigation.routes";
 
 export default function ApplicationsSection() {
   return (

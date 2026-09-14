@@ -5,7 +5,7 @@ import MaterialsSection from "@screenComponent/home/materialsSection";
 import ApproachSection from "@screenComponent/home/approachSection";
 import ApplicationsSection from "@screenComponent/home/applicationsSection";
 import CallToActionSection from "@screenComponent/home/callToActionSection";
-import { NAVIGATION_ROUTES } from "@/routes/navigation.routes";
+import { NAVIGATION_ROUTES } from "@routes/navigation.routes";
 
 export default function Home() {
   return (

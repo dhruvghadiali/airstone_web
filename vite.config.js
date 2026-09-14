@@ -15,6 +15,7 @@ export default defineConfig({
       '@context': new URL('./src/contexts', import.meta.url).pathname,
       '@api': new URL('./src/api', import.meta.url).pathname,
       '@enum': new URL('./src/enum', import.meta.url).pathname,
+      '@routes': new URL('./src/routes', import.meta.url).pathname,
       '@': new URL('./src', import.meta.url).pathname,
     },
   },

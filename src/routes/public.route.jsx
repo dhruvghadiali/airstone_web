@@ -4,8 +4,8 @@ import { Navigate, Outlet } from "react-router-dom";
 
 import { loggedOut } from "@redux/auth/auth.action";
 import { selectAuthToken } from "@redux/auth/auth.selector";
-import { isAuthTokenValid } from "@/routes/auth-token.util";
-import { NAVIGATION_ROUTES } from "@/routes/navigation.routes";
+import { isAuthTokenValid } from "@routes/auth-token.util";
+import { NAVIGATION_ROUTES } from "@routes/navigation.routes";
 
 export default function PublicRoute() {
   const dispatch = useDispatch();

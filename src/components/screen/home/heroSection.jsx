@@ -6,7 +6,7 @@ import { products } from "@screenComponent/home/homeData";
 import {
   createSectionRoute,
   NAVIGATION_ROUTES,
-} from "@/routes/navigation.routes";
+} from "@routes/navigation.routes";
 
 export default function HeroSection() {
   return (

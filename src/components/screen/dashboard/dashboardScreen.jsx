@@ -15,8 +15,8 @@ import { Button } from "@shadcnComponent/button";
 import { ROLE_OPTIONS } from "@enum/roles";
 import { loggedOut } from "@redux/auth/auth.action";
 import { selectAuth } from "@redux/auth/auth.selector";
-import { getTokenExpiration } from "@/routes/auth-token.util";
-import { NAVIGATION_ROUTES } from "@/routes/navigation.routes";
+import { getTokenExpiration } from "@routes/auth-token.util";
+import { NAVIGATION_ROUTES } from "@routes/navigation.routes";
 
 const operationalAreas = Object.freeze([
   {
