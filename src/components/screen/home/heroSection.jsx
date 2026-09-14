@@ -1,4 +1,5 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
+import _ from "lodash";
 import { Button } from "@shadcnComponent/button";
 import { Eyebrow } from "@screenComponent/home/eyebrow";
 import { products } from "@screenComponent/home/homeData";
@@ -47,7 +48,7 @@ export default function HeroSection() {
           </figure>
         </div>
         <div className="grid gap-3 border-t border-black/10 pt-6 sm:grid-cols-3">
-          {products.map((product, index) => (
+          {_.map(products, (product, index) => (
             <a
               key={product.name}
               href={createSectionRoute(product.id)}

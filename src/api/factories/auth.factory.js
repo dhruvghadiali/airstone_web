@@ -1,4 +1,4 @@
-import isArray from "lodash/isArray.js";
+import _ from "lodash";
 
 import { apiClient } from "@api/client.api";
 import { ENDPOINTS } from "@api/endpoints.constants";
@@ -11,7 +11,7 @@ export function createAuthApi(rolePath) {
         payload,
       );
 
-      return isArray(data) ? (data[0] ?? {}) : (data ?? {});
+      return _.isArray(data) ? (data[0] ?? {}) : (data ?? {});
     },
   };
 }

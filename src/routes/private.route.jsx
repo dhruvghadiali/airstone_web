@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import _ from "lodash";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 
@@ -28,10 +29,10 @@ export default function PrivateRoute() {
       return undefined;
     }
 
-    const remainingTime = expiresAt.getTime() - Date.now();
+    const remainingTime = expiresAt.getTime() - _.now();
     const timeoutId = window.setTimeout(
       () => dispatch(loggedOut()),
-      Math.max(0, Math.min(remainingTime, 2_147_483_647)),
+      _.clamp(remainingTime, 0, 2_147_483_647),
     );
 
     return () => window.clearTimeout(timeoutId);

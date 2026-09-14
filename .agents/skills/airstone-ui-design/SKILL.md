@@ -31,6 +31,12 @@ If a required Shadcn primitive is not present, add the primitive as a new file u
 - Preserve semantic labels, keyboard operation, focus states, error associations, and appropriate ARIA attributes.
 - Keep mobile and desktop behavior intentional; verify responsive layouts when a change affects structure or navigation.
 
+## Lodash Convention
+
+- When creating or modifying application code, use the installed Lodash package when an appropriate Lodash function can replace equivalent collection, object, string, type-checking, or value-normalization logic clearly.
+- Import Lodash as `import _ from "lodash";` and call functions through the `_` namespace, such as `_.map`, `_.find`, or `_.get`.
+- Do not introduce Lodash usage or imports in `src/components/ui`; Shadcn primitives must remain untouched.
+
 ## Verification
 
 - Confirm new UI code imports shared or Shadcn components through the configured aliases.

@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import _ from "lodash";
 import { ArrowUpRight, Menu } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Brand } from "@screenComponent/home/brand";
@@ -34,7 +35,7 @@ export function SiteHeader() {
           className="hidden items-center gap-1 rounded-full border border-black/10 bg-white/35 p-1 shadow-sm backdrop-blur-lg md:flex"
           aria-label="Main navigation"
         >
-          {navigation.map(([label, href]) => (
+          {_.map(navigation, ([label, href]) => (
             <Button key={label} variant="ghost" size="sm" asChild>
               <a href={href}>{label}</a>
             </Button>
@@ -77,7 +78,7 @@ export function SiteHeader() {
               </SheetDescription>
             </div>
             <nav className="mt-8 flex flex-col" aria-label="Mobile navigation">
-              {navigation.map(([label, href], index) => (
+              {_.map(navigation, ([label, href], index) => (
                 <SheetClose asChild key={label}>
                   <a
                     className="group flex items-center justify-between border-b border-black/10 py-5 text-xl font-medium tracking-[-0.03em]"

@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 import { Eyebrow } from "@screenComponent/home/eyebrow";
 import { products } from "@screenComponent/home/homeData";
 
@@ -21,7 +23,7 @@ export default function MaterialsSection() {
         </div>
       </div>
       <div className="mt-9 border-b sm:mt-14 border-black/10 lg:mt-20">
-        {products.map((product, index) => (
+        {_.map(products, (product, index) => (
           <article
             className="group grid grid-cols-[1.5rem_minmax(0,1fr)] sm:grid-cols-[2.5rem_minmax(0,1fr)] items-center gap-4 border-t border-black/10 py-7 lg:grid-cols-[5rem_1.1fr_1fr] lg:gap-7 lg:py-10"
             id={product.id}

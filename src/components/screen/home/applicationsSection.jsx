@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import _ from "lodash";
 import { Eyebrow } from "@screenComponent/home/eyebrow";
 import { Button } from "@shadcnComponent/button";
 import { NAVIGATION_ROUTES } from "@/routes/navigation.routes";
@@ -24,7 +25,7 @@ export default function ApplicationsSection() {
         </div>
       </div>
       <div className="mt-9 border-b sm:mt-14 border-black/10 lg:mt-20">
-        {[
+        {_.map([
           [
             "01",
             "Residential.",
@@ -43,7 +44,7 @@ export default function ApplicationsSection() {
             "Take the possibilities outside.",
             "Paths, courtyards, and open spaces. A considered finish, underfoot.",
           ],
-        ].map(([number, title, label, text]) => (
+        ], ([number, title, label, text]) => (
           <article
             className="group grid grid-cols-[minmax(0,1fr)_auto] gap-3 sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] sm:gap-4 border-t border-black/10 py-8 lg:grid-cols-[5rem_1fr_1fr_auto] lg:items-center lg:gap-7"
             key={number}

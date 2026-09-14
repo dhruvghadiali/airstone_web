@@ -1,4 +1,5 @@
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
+import _ from "lodash";
 
 import {
   adminAuthApi,
@@ -27,9 +28,9 @@ const authApiByRole = Object.freeze({
 
 function normalizeSession(session) {
   return {
-    username: session?.username ?? null,
-    token: session?.token ?? null,
-    role: session?.role ?? null,
+    username: _.get(session, "username", null),
+    token: _.get(session, "token", null),
+    role: _.get(session, "role", null),
   };
 }
 

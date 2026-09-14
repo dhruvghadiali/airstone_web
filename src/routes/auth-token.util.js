@@ -1,13 +1,16 @@
+import _ from "lodash";
+
 function decodeJwtPayload(token) {
   try {
-    const [, payload] = token.split(".");
+    const [, payload] = _.split(token, ".");
 
     if (!payload) {
       return null;
     }
 
-    const normalized = payload.replace(/-/g, "+").replace(/_/g, "/");
-    const padded = normalized.padEnd(
+    const normalized = _.replace(_.replace(payload, /-/g, "+"), /_/g, "/");
+    const padded = _.padEnd(
+      normalized,
       normalized.length + ((4 - (normalized.length % 4)) % 4),
       "=",
     );
@@ -19,13 +22,13 @@ function decodeJwtPayload(token) {
 }
 
 function isJwtToken(token) {
-  return token.split(".").length === 3;
+  return _.size(_.split(token, ".")) === 3;
 }
 
 export function getTokenExpiration(token) {
-  const expiresAt = Number(decodeJwtPayload(token)?.exp);
+  const expiresAt = _.toNumber(_.get(decodeJwtPayload(token), "exp"));
 
-  if (!Number.isFinite(expiresAt) || expiresAt <= 0) {
+  if (!_.isFinite(expiresAt) || expiresAt <= 0) {
     return null;
   }
 
@@ -33,11 +36,11 @@ export function getTokenExpiration(token) {
 }
 
 export function isAuthTokenValid(token) {
-  if (typeof token !== "string" || !token.trim()) {
+  if (!_.isString(token) || !_.trim(token)) {
     return false;
   }
 
-  const normalizedToken = token.trim();
+  const normalizedToken = _.trim(token);
 
   if (isJwtToken(normalizedToken) && !decodeJwtPayload(normalizedToken)) {
     return false;
@@ -45,5 +48,5 @@ export function isAuthTokenValid(token) {
 
   const expiresAt = getTokenExpiration(normalizedToken);
 
-  return !expiresAt || Date.now() < expiresAt.getTime();
+  return !expiresAt || _.now() < expiresAt.getTime();
 }

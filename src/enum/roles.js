@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 export const ROLES = Object.freeze({
   SUPER_ADMIN: "super_admin",
   ADMIN: "admin",
@@ -10,7 +12,7 @@ export const ROLE_OPTIONS = Object.freeze([
   { label: "Employee", value: ROLES.EMPLOYEE },
 ]);
 
-export const ROLE_VALUES = Object.freeze(Object.values(ROLES));
+export const ROLE_VALUES = Object.freeze(_.values(ROLES));
 
 export const ROLE_API_PATHS = Object.freeze({
   [ROLES.SUPER_ADMIN]: "super-admin",

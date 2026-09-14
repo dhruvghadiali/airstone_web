@@ -1,4 +1,4 @@
-import find from "lodash/find.js";
+import _ from "lodash";
 import {
   Activity,
   Boxes,
@@ -40,7 +40,7 @@ export default function DashboardScreen() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { username, role, token } = useSelector(selectAuth);
-  const roleLabel = find(ROLE_OPTIONS, { value: role })?.label ?? "Team member";
+  const roleLabel = _.find(ROLE_OPTIONS, { value: role })?.label ?? "Team member";
   const expiresAt = getTokenExpiration(token);
   const expiryLabel = expiresAt
     ? new Intl.DateTimeFormat(undefined, {
@@ -97,7 +97,7 @@ export default function DashboardScreen() {
         </section>
 
         <section className="mt-6 grid gap-4 md:grid-cols-3">
-          {operationalAreas.map(({ title, description, icon: Icon }, index) => (
+          {_.map(operationalAreas, ({ title, description, icon: Icon }, index) => (
             <article
               className="group rounded-[1.5rem] border border-black/10 bg-card p-6 transition-transform duration-300 hover:-translate-y-1"
               key={title}

@@ -1,4 +1,5 @@
 import axios from "axios";
+import _ from "lodash";
 
 import {
   getStoredAuth,
@@ -25,7 +26,7 @@ apiClient.interceptors.request.use((config) => {
 });
 
 function unwrapEnvelope(body, fallbackStatus) {
-  const envelope = body && typeof body === "object" ? body : {};
+  const envelope = _.isObject(body) ? body : {};
 
   return {
     status: envelope.status ?? fallbackStatus,
@@ -40,7 +41,7 @@ apiClient.interceptors.response.use(
 
     if (envelope.status >= 400) {
       return Promise.reject(
-        Object.assign(
+        _.assign(
           new Error(envelope.message || "Request failed."),
           envelope,
         ),
@@ -63,18 +64,20 @@ apiClient.interceptors.response.use(
       notifyInvalidAuthSession();
     }
 
-    return Promise.reject(Object.assign(new Error(message), envelope));
+    return Promise.reject(_.assign(new Error(message), envelope));
   },
 );
 
 export function extractErrorMessage(error) {
-  if (Array.isArray(error?.data) && error.data.length > 0) {
-    const messages = error.data
-      .map((item) => (typeof item === "string" ? item : item?.message))
-      .filter(Boolean);
+  if (_.isArray(error?.data) && !_.isEmpty(error.data)) {
+    const messages = _.compact(
+      _.map(error.data, (item) =>
+        _.isString(item) ? item : _.get(item, "message"),
+      ),
+    );
 
-    if (messages.length > 0) {
-      return messages.join(" ");
+    if (!_.isEmpty(messages)) {
+      return _.join(messages, " ");
     }
   }
 

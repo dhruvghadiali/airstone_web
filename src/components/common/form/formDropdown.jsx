@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import _ from "lodash";
 import { Check, ChevronsUpDown, LoaderCircle } from "lucide-react";
 import { Button } from "@shadcnComponent/button";
 import {
@@ -41,8 +42,9 @@ export default function FormDropdown({
   const [internalValue, setInternalValue] = useState(defaultValue);
   const [searchValue, setSearchValue] = useState("");
   const selectedValue = value === undefined ? internalValue : value;
-  const selectedOption = options.find(
-    (option) => String(option.value) === String(selectedValue),
+  const selectedOption = _.find(
+    options,
+    (option) => _.toString(option.value) === _.toString(selectedValue),
   );
   const dropdownId = id ?? name;
   const errorId = error && dropdownId ? `${dropdownId}-error` : undefined;
@@ -59,7 +61,7 @@ export default function FormDropdown({
   };
 
   const handleSelect = async (option) => {
-    const isSelected = String(option.value) === String(selectedValue);
+    const isSelected = _.toString(option.value) === _.toString(selectedValue);
     const nextValue = isSelected ? "" : option.value;
 
     if (value === undefined) {
@@ -143,10 +145,10 @@ export default function FormDropdown({
                 <>
                   <CommandEmpty>{emptyMessage}</CommandEmpty>
                   <CommandGroup>
-                    {options.map((option) => (
+                    {_.map(options, (option) => (
                       <CommandItem
                         key={option.value}
-                        value={String(option.value)}
+                        value={_.toString(option.value)}
                         keywords={[option.label]}
                         disabled={option.disabled}
                         onSelect={() => handleSelect(option)}
@@ -155,7 +157,7 @@ export default function FormDropdown({
                         <Check
                           className={cn(
                             "mr-2 size-4",
-                            String(selectedValue) === String(option.value)
+                            _.toString(selectedValue) === _.toString(option.value)
                               ? "opacity-100"
                               : "opacity-0",
                           )}
