@@ -2,6 +2,7 @@ export const NAVIGATION_ROUTES = Object.freeze({
   HOME: "/",
   LOGIN: "/login",
   DASHBOARD: "/dashboard",
+  ADMINS: "/admins",
   NOT_FOUND: "*",
   SECTIONS: Object.freeze({
     HOME: "#home",

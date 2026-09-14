@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "@page/home";
 import Login from "@page/login";
 import Dashboard from "@page/dashboard";
+import Admins from "@page/admins";
 import { ThemeProvider } from "@context/ThemeProvider";
 import AppDrawer from "@commonComponent/navigation/appDrawer";
 import PrivateRoute from "@routes/private.route";
@@ -23,6 +24,10 @@ export default function App() {
               <Route
                 path={NAVIGATION_ROUTES.DASHBOARD}
                 element={<Dashboard />}
+              />
+              <Route
+                path={NAVIGATION_ROUTES.ADMINS}
+                element={<Admins />}
               />
             </Route>
           </Route>
