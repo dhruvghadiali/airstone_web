@@ -13,7 +13,7 @@ import {
   selectIsSigningIn,
   selectSignInError,
 } from "@redux/auth/auth.selector";
-import { NAVIGATION_ROUTES } from "@routes/navigation.routes";
+import { getRoleLandingRoute } from "@routes/role-landing.util";
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ export default function LoginForm() {
       try {
         await dispatch(signIn(values)).unwrap();
 
-        navigate(NAVIGATION_ROUTES.DASHBOARD, { replace: true });
+        navigate(getRoleLandingRoute(values.role), { replace: true });
       } catch {
         // The Redux error state contains the display-ready API message.
       } finally {

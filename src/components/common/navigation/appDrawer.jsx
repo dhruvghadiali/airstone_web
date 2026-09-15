@@ -36,12 +36,12 @@ export default function AppDrawer() {
       <div className="flex min-h-screen bg-background">
         <aside
           className={cn(
-            "sticky top-0 hidden h-screen shrink-0 border-r border-black/10 bg-[#f3f4ee] p-4 transition-[width] duration-300 md:block",
-            drawerCollapsed ? "w-20" : "w-68",
+            "sticky top-0 hidden h-screen shrink-0 border-r border-black/10 bg-[#f3f4ee] p-3 transition-[width] duration-300 md:block",
+            drawerCollapsed ? "w-18" : "w-60",
           )}
         >
           <Button
-            className="absolute -right-4 top-6 z-10 size-8 rounded-full bg-background shadow-sm"
+            className="absolute -right-3.5 top-5 z-10 size-7 rounded-full bg-background shadow-sm"
             variant="outline"
             size="icon"
             onClick={() => setDrawerCollapsed((current) => !current)}
@@ -62,12 +62,12 @@ export default function AppDrawer() {
                   <Menu />
                 </Button>
               </DrawerTrigger>
-              <DrawerContent className="h-[82svh] bg-[#f3f4ee] px-6 pb-6">
+              <DrawerContent className="h-[76svh] bg-[#f3f4ee] px-5 pb-5 sm:px-6 sm:pb-6">
                 <DrawerTitle className="sr-only">Workspace navigation</DrawerTitle>
                 <DrawerDescription className="sr-only">
                   Navigate the Airstone workspace or log out.
                 </DrawerDescription>
-                <div className="min-h-0 flex-1 pt-8">
+                <div className="min-h-0 flex-1 pt-6">
                   <DrawerNavigation onNavigate={() => setMobileDrawerOpen(false)} />
                 </div>
               </DrawerContent>

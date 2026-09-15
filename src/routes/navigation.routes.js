@@ -4,6 +4,7 @@ export const NAVIGATION_ROUTES = Object.freeze({
   DASHBOARD: "/dashboard",
   ADMINS: "/admins",
   ADMINS_FORM: "/admins/form",
+  ACCESS_UNAVAILABLE: "/access-unavailable",
   NOT_FOUND: "*",
   SECTIONS: Object.freeze({
     HOME: "#home",

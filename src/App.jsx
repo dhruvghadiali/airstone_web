@@ -4,11 +4,14 @@ import Login from "@page/login";
 import Dashboard from "@page/dashboard";
 import Admins from "@page/admins";
 import AdminForm from "@page/adminForm";
+import AccessUnavailable from "@page/accessUnavailable";
 import { ThemeProvider } from "@context/ThemeProvider";
 import AppDrawer from "@commonComponent/navigation/appDrawer";
 import PrivateRoute from "@routes/private.route";
 import PublicRoute from "@routes/public.route";
 import { NAVIGATION_ROUTES } from "@routes/navigation.routes";
+import RoleRoute from "@routes/role.route";
+import { ROUTE_ACCESS } from "@routes/route-access.constants";
 
 export default function App() {
   return (
@@ -23,17 +26,25 @@ export default function App() {
           <Route element={<PrivateRoute />}>
             <Route element={<AppDrawer />}>
               <Route
-                path={NAVIGATION_ROUTES.DASHBOARD}
-                element={<Dashboard />}
+                path={NAVIGATION_ROUTES.ACCESS_UNAVAILABLE}
+                element={<AccessUnavailable />}
               />
-              <Route
-                path={NAVIGATION_ROUTES.ADMINS}
-                element={<Admins />}
-              />
-              <Route
-                path={NAVIGATION_ROUTES.ADMINS_FORM}
-                element={<AdminForm />}
-              />
+              <Route element={<RoleRoute allowedRoles={ROUTE_ACCESS.DASHBOARD} />}>
+                <Route
+                  path={NAVIGATION_ROUTES.DASHBOARD}
+                  element={<Dashboard />}
+                />
+              </Route>
+              <Route element={<RoleRoute allowedRoles={ROUTE_ACCESS.ADMINS} />}>
+                <Route
+                  path={NAVIGATION_ROUTES.ADMINS}
+                  element={<Admins />}
+                />
+                <Route
+                  path={NAVIGATION_ROUTES.ADMINS_FORM}
+                  element={<AdminForm />}
+                />
+              </Route>
             </Route>
           </Route>
 

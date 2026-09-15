@@ -7,7 +7,7 @@ import {
   extractErrorMessage,
   superAdminAuthApi,
 } from "@api";
-import { ROLES } from "@enum/roles";
+import { ROLES, ROLE_VALUES } from "@enum/roles";
 import { isAuthTokenValid } from "@routes/auth-token.util";
 import { toLoginApiPayload } from "@screenComponent/login/form/login-api.payload";
 import { fromLoginResponse } from "@screenComponent/login/form/login-frontend.payload";
@@ -38,7 +38,10 @@ export function restoreAuthSession() {
   return (dispatch) => {
     const storedSession = getStoredAuth();
 
-    if (isAuthTokenValid(storedSession?.token)) {
+    if (
+      isAuthTokenValid(storedSession?.token) &&
+      _.includes(ROLE_VALUES, storedSession?.role)
+    ) {
       dispatch(authSessionReceived(normalizeSession(storedSession)));
       return;
     }
