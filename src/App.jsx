@@ -3,6 +3,7 @@ import Home from "@page/home";
 import Login from "@page/login";
 import Dashboard from "@page/dashboard";
 import Admins from "@page/admins";
+import AdminForm from "@page/adminForm";
 import { ThemeProvider } from "@context/ThemeProvider";
 import AppDrawer from "@commonComponent/navigation/appDrawer";
 import PrivateRoute from "@routes/private.route";
@@ -28,6 +29,10 @@ export default function App() {
               <Route
                 path={NAVIGATION_ROUTES.ADMINS}
                 element={<Admins />}
+              />
+              <Route
+                path={NAVIGATION_ROUTES.ADMINS_FORM}
+                element={<AdminForm />}
               />
             </Route>
           </Route>

@@ -16,7 +16,7 @@ export default function ScreenHeader({ breadcrumbs = [], title, subtitle, action
     <header className="relative border-b border-black/15 pb-6 sm:pb-8">
       {!_.isEmpty(breadcrumbs) && (
         <Breadcrumb className="mb-4">
-          <BreadcrumbList className="gap-0 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] sm:gap-0">
+          <BreadcrumbList className="gap-0 text-xs font-medium tracking-wide sm:gap-0">
             {_.map(breadcrumbs, ({ label, route }, index) => {
               const isCurrentPage = index === breadcrumbs.length - 1;
 

@@ -43,7 +43,9 @@ export default function DrawerNavigation({ collapsed = false, onNavigate }) {
 
       <nav className="mt-10 space-y-2" aria-label="Workspace navigation">
         {_.map(drawerNavigation, ({ label, route, icon: Icon }) => {
-          const isActive = location.pathname === route;
+          const isActive =
+            location.pathname === route ||
+            _.startsWith(location.pathname, `${route}/`);
           const navigationLink = (
             <Button
               className={cn(
